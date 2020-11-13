@@ -1,27 +1,18 @@
-// function app(params) {
-//     return
-//     const auth = firebase.auth()
-//     let loginButtonElement = document.querySelector("#login-button")
-//     loginButtonElement.addEventListener('click', onUserLogin)
+function forexPairProvider() {
+    const url = `https://www.freeforexapi.com/api/live`
+    const forexElement = document.getElementById(`#content-div`)
 
-//     function onUserLogin(e) {
-//         let usernameElement = document.querySelector("#username")
-//         let passwordElement = document.querySelector("#password")
+    console.log(`the function has been invoked`)
+}
 
-//         auth.signInWithEmailAndPassword(usernameElement.value, passwordElement.value)
-//             .then(res => {
-//                 console.log('Looged in succsessfuly')
-//             })
-//             .catch(console.log('err loggin in'))
-//     }
+function onUserLogin() {
+      let usernameElement = document.querySelector("#username")
+      let passwordElement = document.querySelector("#password")
 
-// }
-
-
-
-// function forexPairProvider() {
-//     const url = `https://api.ratesapi.io/api/latest`
-//     const forexElement = document.getElementById(`#content-div`)
-
-//     c
-// }
+      auth.signInWithEmailAndPassword(usernameElement.value, passwordElement.value)
+        .then(res => {
+          console.log('Looged in succsessfuly')
+          document.querySelector("#welcome-message").innerHTML = `Welcome ${res.user.email}`
+          document.querySelector("body > div > div.navbar > div > button").parentElement.removeChild(document.querySelector("body > div > div.navbar > div > button"))
+        })
+    }
