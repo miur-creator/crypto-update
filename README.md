@@ -1,2 +1,2 @@
-# simple-app
+# mega-simple-app
 Sorry for the ugly CSS
