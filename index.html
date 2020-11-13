@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <title>My First App</title>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+</head>
+
+<body>
+  <div>
+    <div class="navbar">
+      <a href="#home">Home</a>
+      <a href="#news">News</a>
+      <p id="welcome-message">Hello anonymous</p>
+      <div class="dropdown">
+        <button class="dropbtn">Login
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <div class="login-form">
+            <p>Username:</p>
+            <input type="text" id="username" />
+            <p>Pasword:</p>
+            <input type="password" id="password" />
+            <button id="login-button">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="content-div"></div>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth()
+    let loginButtonElement = document.querySelector("#login-button")
+    loginButtonElement.addEventListener('click', onUserLogin)
+
+    function onUserLogin(e) {
+      let usernameElement = document.querySelector("#username")
+      let passwordElement = document.querySelector("#password")
+
+      auth.signInWithEmailAndPassword(usernameElement.value, passwordElement.value)
+        .then(res => {
+          console.log('Looged in succsessfuly')
+          document.querySelector("#welcome-message").innerHTML = `Welcome ${res.user.email}`
+          document.querySelector("body > div > div.navbar > div > button").parentElement.removeChild(document.querySelector("body > div > div.navbar > div > button"))
+        })
+    }
+
+    
+  </script>
+</body>
+
+</html>
