@@ -1,7 +1,8 @@
 var trendingCoins = []
+var cryptoCoins = []
 
 async function forexPairProvider() {
-    console.log(`the forexPair function has been called`)
+    // console.log(`the forexPair function has been called`)
     let url = `https://api.coingecko.com/api/v3/search/trending.json`
     let res = await fetch(url)
 
@@ -12,14 +13,12 @@ async function forexPairProvider() {
 
 }
 
-
-
 function trendingCoinsTemplate() {
     let tableParentElement = document.querySelector("#trending-div > table > tbody")
     newTableRows = []
 
-    console.log(`the template function has been called`)
-    console.log(trendingCoins)
+    // console.log(`the template function has been called`)
+    // console.log(trendingCoins)
 
     trendingCoins.forEach(element => {
         newTableRows.push(`<tr><td class="trending-td">${element[0]}</td><td class="trending-td">${element[1]}</td><td class="trending-td">${element[3]}</td><td class="trending-td"><img src=${element[2]}></td></tr>`)
@@ -43,19 +42,60 @@ function onUserLogin() {
         .catch(err => console.log(err))
 }
 
-function goofing() {
-    console.log(`the forexPair function has been called`)
-    let url = `https://api.coingecko.com/api/v3/search/trending.json`
-    fetch(url)
+async function topCoins() {
+    let res = await fetch("https://coinranking1.p.rapidapi.com/coins", {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "c66e96d239msh3a7b72acc8ad80bp1f5c77jsna83f1e7778a7",
+                "x-rapidapi-host": "coinranking1.p.rapidapi.com"
+            }
+        })
+        // iconUrl marketCap $symbol allTimeHigh history
         .then(res => res.json())
-        .then(res => res.coins)
+        .then(res => res.data.coins.map(coin => cryptoCoins.push([coin.iconUrl, coin.marketCap, coin.symbol, coin.allTimeHigh, coin.history])))
+        .then(response => {
+            console.log(cryptoCoins)
+        })
+        .catch(err => {
+            console.error(err);
+        });
 
-    // let data = (await res.json()).coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
-    // data = data.coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
-
-
+        allCoinsTemplate()
 }
 
+function allCoinsTemplate() {
+    let tableParentElement = document.querySelector("#coins-table > table > tbody")
+    newTableRows = []
+
+    // console.log(`the template function has been called`)
+
+    cryptoCoins.forEach(element => {
+        newTableRows.push(`<tr><td class="trending-td">${element[2]}</td><td class="trending-td"><img width="30" height="30" src=${element[0]}></td><td class="trending-td">2</td><td class="trending-td">${element[2]}</td></tr>`)
+    });
+
+    tableParentElement.innerHTML += newTableRows.join(``)
+    // //console.log(tableParentElement.innerHTML)
+}
+
+// function goofing() {
+//     fetch("https://coinranking1.p.rapidapi.com/coins", {
+//             "method": "GET",
+//             "headers": {
+//                 "x-rapidapi-key": "c66e96d239msh3a7b72acc8ad80bp1f5c77jsna83f1e7778a7",
+//                 "x-rapidapi-host": "coinranking1.p.rapidapi.com"
+//             }
+//         })
+//         // iconUrl marketCap symbol allTimeHigh history
+//         .then(res => res.json())
+//         .then(res => res.data.coins)
+//         .then(res => res.map(coin => ))
+//         .then(response => {
+//             console.log(response);
+//         })
+//         .catch(err => {
+//             console.error(err);
+//         });
+// }
 
 //Mistakes were made
 // function forexPairProvider() {

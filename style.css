@@ -4,8 +4,8 @@ body {
     padding:0;
   } 
   .content-div{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-image: url('img/bg\ image.jpg');
     background-size: cover;
     background-repeat: no-repeat;
