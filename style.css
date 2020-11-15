@@ -117,16 +117,20 @@ body {
   } 
 
   .trending-th {
-    color: lavender;
+    color: lemonchiffon;
     font-size: 24px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom:  15px;
   }
 
+  #coin-trending-tag {
+    float: left;
+  }
+
   .trending-td {
-    color: khaki;
-    font-size: 22px;
+    color: lemonchiffon;
+    font-size: 20px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom:  15px;

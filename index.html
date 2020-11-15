@@ -42,16 +42,10 @@
         <div class="trending-coins">Trending Coins</div>
         <table class="trending-table">
           <tr>
-            <th class="trending-th">Coin</th>
-            <th class="trending-th">pic</th>
-            <th class="trending-th">USD Price</th>
+            <th id="coin-trending-tag" class="trending-th">Coin</th>
+            <th class="trending-th"></th>
             <th class="trending-th">Market placement</th>
-          </tr>
-          <tr>
-            <td class="trending-td">BTC</td>
-            <td class="trending-td">img</td>
-            <td class="trending-td">16222</td>
-            <td class="trending-td">16222</td>
+            <th class="trending-th"></th>
           </tr>
         </table>
       </div>
@@ -68,9 +62,9 @@
     let loginButtonElement = document.querySelector("#login-button")
     loginButtonElement.addEventListener('click', onUserLogin)
 
-
     forexPairProvider()
 
+    
   </script>
 
 </body>
