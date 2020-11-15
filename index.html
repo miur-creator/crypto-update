@@ -12,10 +12,11 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
 
+
 </head>
 
 <body>
-  <div id="main-div">
+  <div id="wrapper">
     <div class="navbar">
       <a href="#home">Home</a>
       <a href="#news">News</a>
@@ -34,8 +35,27 @@
           </div>
         </div>
       </div>
+
     </div>
-    <div class="content-div"></div>
+    <div class="content-div">
+      <div id="trending-div">
+        <div class="trending-coins">Trending Coins</div>
+        <table class="trending-table">
+          <tr>
+            <th class="trending-th">Coin</th>
+            <th class="trending-th">pic</th>
+            <th class="trending-th">USD Price</th>
+            <th class="trending-th">Market placement</th>
+          </tr>
+          <tr>
+            <td class="trending-td">BTC</td>
+            <td class="trending-td">img</td>
+            <td class="trending-td">16222</td>
+            <td class="trending-td">16222</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 
 
@@ -48,10 +68,11 @@
     let loginButtonElement = document.querySelector("#login-button")
     loginButtonElement.addEventListener('click', onUserLogin)
 
-    
+
     forexPairProvider()
-    
+
   </script>
+
 </body>
 
 </html>

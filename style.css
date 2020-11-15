@@ -97,3 +97,37 @@ body {
     position: absolute;
     right: 30px;
   }
+
+  .trending-coins {
+    color: lavender;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    padding-left: 50px;
+    font-size: 28px;
+  }
+
+  .trending-table {
+    color: lavender;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 18px;
+    font-size: 28px;
+    
+  } 
+
+  .trending-th {
+    color: lavender;
+    font-size: 24px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom:  15px;
+  }
+
+  .trending-td {
+    color: khaki;
+    font-size: 22px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom:  15px;
+  }
