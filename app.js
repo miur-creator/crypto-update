@@ -4,8 +4,9 @@ async function forexPairProvider() {
     console.log(`the forexPair function has been called`)
     let url = `https://api.coingecko.com/api/v3/search/trending.json`
     let res = await fetch(url)
+
     let data = (await res.json()).coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
-   // data = data.coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
+    // data = data.coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
 
     trendingCoinsTemplate()
 
@@ -22,10 +23,8 @@ function trendingCoinsTemplate() {
 
     trendingCoins.forEach(element => {
         newTableRows.push(`<tr><td class="trending-td">${element[0]}</td><td class="trending-td">${element[1]}</td><td class="trending-td">${element[3]}</td><td class="trending-td"><img src=${element[2]}></td></tr>`)
-        console.log(element)
     });
 
-    console.log(newTableRows.join(``))
     tableParentElement.innerHTML += newTableRows.join(``)
     // //console.log(tableParentElement.innerHTML)
 }
@@ -44,6 +43,18 @@ function onUserLogin() {
         .catch(err => console.log(err))
 }
 
+function goofing() {
+    console.log(`the forexPair function has been called`)
+    let url = `https://api.coingecko.com/api/v3/search/trending.json`
+    fetch(url)
+        .then(res => res.json())
+        .then(res => res.coins)
+
+    // let data = (await res.json()).coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
+    // data = data.coins.map(x => trendingCoins.push([x.item.name, x.item.symbol, x.item.thumb, x.item[`market_cap_rank`]]))
+
+
+}
 
 
 //Mistakes were made
