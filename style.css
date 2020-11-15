@@ -2,19 +2,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin:0;
     padding:0;
-  } 
-  .content-div{
     height: 100%;
     width: 100%;
-    background-image: url('img/bg\ image.jpg');
+    background-image: url('img/Grey-website-background.png');
     background-size: cover;
     background-repeat: no-repeat;
-    
-  }
+
+  } 
   
   .navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(97, 97, 97);
   }
   
   .navbar a {
@@ -98,15 +96,6 @@ body {
     right: 30px;
   }
 
-  .trending-coins {
-    color: lavender;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-top: 40px;
-    padding-left: 50px;
-    font-size: 28px;
-  }
-
   .trending-table {
     color: lavender;
     background-size: cover;
@@ -124,6 +113,14 @@ body {
     padding-bottom:  15px;
   }
 
+  .trending-coins {
+    color: rgb(218, 210, 138);
+    font-size: 32px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom:  15px;
+  }
+
   #coin-trending-tag {
     float: left;
   }
@@ -134,4 +131,12 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom:  15px;
+  }
+
+  #trending-div {
+  float: right;
+  }
+
+  #coins-table {
+    float: left;
   }

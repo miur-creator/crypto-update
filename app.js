@@ -14,18 +14,30 @@ async function forexPairProvider() {
 }
 
 function trendingCoinsTemplate() {
-    let tableParentElement = document.querySelector("#trending-div > table > tbody")
+    let tableParentElement = document.querySelector("#trending-div")
     newTableRows = []
-
-    // console.log(`the template function has been called`)
-    // console.log(trendingCoins)
 
     trendingCoins.forEach(element => {
         newTableRows.push(`<tr><td class="trending-td">${element[0]}</td><td class="trending-td">${element[1]}</td><td class="trending-td">${element[3]}</td><td class="trending-td"><img src=${element[2]}></td></tr>`)
     });
 
-    tableParentElement.innerHTML += newTableRows.join(``)
-    // //console.log(tableParentElement.innerHTML)
+    let tableElement = `        
+    <table class="trending-table">
+        <th class="trending-coins">Trending coins</th>
+        <tr>
+            <th id="coin-trending-tag" class="trending-th">Coin</th>
+            <th class="trending-th"></th>
+            <th class="trending-th">Market placement</th>
+            <th class="trending-th"></th>
+        </tr>
+        <tbody>
+            ${newTableRows.join(``)}
+        </tbody>
+    </table>`
+
+
+
+    tableParentElement.innerHTML += tableElement
 }
 
 function onUserLogin() {
@@ -50,32 +62,57 @@ async function topCoins() {
                 "x-rapidapi-host": "coinranking1.p.rapidapi.com"
             }
         })
-        // iconUrl marketCap $symbol allTimeHigh history
+        // $iconUrl marketCap $symbol allTimeHigh history
         .then(res => res.json())
-        .then(res => res.data.coins.map(coin => cryptoCoins.push([coin.iconUrl, coin.marketCap, coin.symbol, coin.allTimeHigh, coin.history])))
+        .then(res => res.data.coins.map(coin => cryptoCoins.push([coin.iconUrl, coin.marketCap, coin.symbol, coin.allTimeHigh, coin.history, coin.rank])))
         .then(response => {
-            console.log(cryptoCoins)
+            console.log(`topCoins function response`)
         })
         .catch(err => {
             console.error(err);
         });
 
-        allCoinsTemplate()
+    allCoinsTemplate()
 }
 
 function allCoinsTemplate() {
-    let tableParentElement = document.querySelector("#coins-table > table > tbody")
+    let tableParentDiv = document.querySelector("#coins-table")
+
     newTableRows = []
 
-    // console.log(`the template function has been called`)
-
     cryptoCoins.forEach(element => {
-        newTableRows.push(`<tr><td class="trending-td">${element[2]}</td><td class="trending-td"><img width="30" height="30" src=${element[0]}></td><td class="trending-td">2</td><td class="trending-td">${element[2]}</td></tr>`)
+        newTableRows.push(`<tr><td class="trending-td">${element[5]}</td><td class="trending-td">${element[2]}</td><td class="trending-td"><img width="30" height="30" src=${element[0]}></td><td class="trending-td">${Number(element[4][0]).toFixed(2)}</td><td class="trending-td">${Number(element[3].price).toFixed(2)}</td><td class="trending-td">$ ${new Intl.NumberFormat().format(Math.round(Number(element[1])))}</td></tr>`)
     });
 
-    tableParentElement.innerHTML += newTableRows.join(``)
-    // //console.log(tableParentElement.innerHTML)
+    let tableElement = `      
+    <table class="trending-table">
+        <tr>
+            <th class="trending-th"></th>
+            <th id="coin-trending-tag" class="trending-th">Coin</th>
+            <th class="trending-th"></th>
+            <th class="trending-th">Curent Price</th>
+            <th class="trending-th">All Time High</th>
+            <th class="trending-th">Market Cap</th>
+        </tr>
+        <tbody>
+            ${newTableRows.join(``)}
+        </tbody>
+  </table>`
+  tableParentDiv.innerHTML += tableElement
 }
+
+// function allCoinsTemplate() {
+//     let tableParentDiv = document.querySelector("#coins-table")
+//     let tableParentElement = document.querySelector("#coins-table > table > tbody")
+//     newTableRows = []
+
+//     cryptoCoins.forEach(element => {
+//         newTableRows.push(`<tr><td class="trending-td">${element[2]}</td><td class="trending-td"><img width="30" height="30" src=${element[0]}></td><td class="trending-td">${Math.round(element[4][0])}</td><td class="trending-td">${Math.round(element[3].price)}</td><td class="trending-td">${Math.round(Number(element[1])/1000000)}</td></tr>`)
+//     });
+
+//     tableParentElement.innerHTML += newTableRows.join(``)
+//     // //console.log(tableParentElement.innerHTML)
+// }
 
 // function goofing() {
 //     fetch("https://coinranking1.p.rapidapi.com/coins", {
