@@ -114,7 +114,7 @@ body {
   }
 
   .trending-coins {
-    color: rgb(218, 210, 138);
+    color:  rgb(190, 176, 64);
     font-size: 32px;
     padding-left: 30px;
     padding-right: 30px;
@@ -126,10 +126,10 @@ body {
   }
 
   .trending-td {
-    color: lemonchiffon;
+    color: rgb(201, 192, 128);
     font-size: 20px;
     padding-left: 30px;
-    padding-right: 30px;
+    padding-right: 15px;
     padding-bottom:  15px;
   }
 
@@ -139,4 +139,12 @@ body {
 
   #coins-table {
     float: left;
+  }
+
+  #main-table-heading {
+    color: rgb(190, 176, 64);
+    font-size: 32px;
+    padding-left: 40px;
+    padding-top: 25px;
+    padding-bottom: 5px;
   }

@@ -86,6 +86,7 @@ function allCoinsTemplate() {
 
     let tableElement = `      
     <table class="trending-table">
+        <div id="main-table-heading">Top 50 Cryptocurrencies</div>
         <tr>
             <th class="trending-th"></th>
             <th id="coin-trending-tag" class="trending-th">Coin</th>
